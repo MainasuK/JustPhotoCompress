@@ -67,7 +67,7 @@ extension PhotoCollectionViewModel: UICollectionViewDataSource {
 
         cell.representedAssetIdentifier = asset.localIdentifier
 
-        let scale = UIScreen.main.scale
+        let scale = UIScreen.main.scale * 2
         let targetSize = CGSize(width: layout.itemSize.width * scale, height: layout.itemSize.height * scale)
         cell.label.text = "\(indexPath.row)"
         cell.label.textColor = .red
@@ -96,7 +96,11 @@ extension PhotoCollectionViewModel: UICollectionViewDataSourcePrefetching {
         }
         let assets = indexPaths.map { allPhotos[$0.row] }
 
-        imageManager.startCachingImages(for: assets, targetSize: collectionViewLayout.itemSize, contentMode: .aspectFit, options: nil)
+        let layout = collectionViewLayout
+        let scale = UIScreen.main.scale
+        let targetSize = CGSize(width: layout.itemSize.width * scale, height: layout.itemSize.height * scale)
+
+        imageManager.startCachingImages(for: assets, targetSize: targetSize, contentMode: .aspectFit, options: nil)
     }
 
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
@@ -106,7 +110,11 @@ extension PhotoCollectionViewModel: UICollectionViewDataSourcePrefetching {
         }
         let assets = indexPaths.map { allPhotos[$0.row] }
 
-        imageManager.stopCachingImages(for: assets, targetSize: collectionViewLayout.itemSize, contentMode: .aspectFit, options: nil)
+        let layout = collectionViewLayout
+        let scale = UIScreen.main.scale
+        let targetSize = CGSize(width: layout.itemSize.width * scale, height: layout.itemSize.height * scale)
+
+        imageManager.stopCachingImages(for: assets, targetSize: targetSize, contentMode: .aspectFit, options: nil)
     }
 
 }

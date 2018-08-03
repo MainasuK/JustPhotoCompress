@@ -31,7 +31,7 @@ class PhotoViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        #warning("FIXME: init auth status issue")
+         #warning("FIXME: init auth status issue")
         DispatchQueue.once(token: "firstViewDidAppear") {
             view.layoutIfNeeded()
 
@@ -61,23 +61,19 @@ class PhotoViewController: UIViewController {
 
 extension PhotoViewController {
 
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
 
         let center = CGPoint(x: collectionView.bounds.size.width * 0.4, y: collectionView.contentOffset.y + collectionView.bounds.size.height * 0.5)
 
         if let indexPath = collectionView.indexPathForItem(at: center),
-        let attribute = collectionView.layoutAttributesForItem(at: indexPath) {
+            let attribute = collectionView.layoutAttributesForItem(at: indexPath) {
             let offsetY = attribute.frame.minY - center.y
 
             collectionView.previousIndexPathAndOffsetYAtCenter = (indexPath, offsetY)
         }
 
-//        coordinator.animate(alongsideTransition: { context in
-            self.collectionView.collectionViewLayout.invalidateLayout()
-//            self.collectionView.reloadData()
-//        }, completion: nil)
-
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
 
 }

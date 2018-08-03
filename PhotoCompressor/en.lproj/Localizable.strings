@@ -8,3 +8,18 @@
 
 "Photos" = "Photos";
 "Compress" = "Compress";
+
+"Size" = "Size";
+"Large" = "Large";
+"Medium" = "Medium";
+"Small" = "Small";
+
+"Quality" = "Quality";
+"Great" = "Great";
+"Good" = "Good";
+"Normal" = "Normal";
+
+"Cancel" = "Cancel";
+"Original: %.3fMiB" = "Original: %.3fMiB";
+"Not Found Photo" = "Not Found Photo";
+

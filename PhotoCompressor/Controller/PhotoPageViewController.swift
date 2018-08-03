@@ -17,6 +17,8 @@ class PhotoPageViewController: UIPageViewController {
     var isControlHidden = false     // hidden control except image
     weak var transitionImage: UIImage?
 
+    var originImageInfo: (id: String, size: Float) = ("", 0.0)
+
     lazy var progressView: PhotoLoadingProgressView = {
         let progressView = PhotoLoadingProgressView()
         progressView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +82,19 @@ class PhotoPageViewController: UIPageViewController {
     }
 
     @objc func compressButtonPressed(_ sender: UIBarButtonItem) {
-        consolePrint("\(sender)")
+        guard let photoDetailViewController = viewControllers?.first as? PhotoDetailViewController,
+        let image = photoDetailViewController.imageView.image else { return }
+
+        let bundle = Bundle(for: ActionViewController.self)
+        let actionViewController = UIStoryboard(name: "MainInterface", bundle: bundle).instantiateViewController(withIdentifier: "ActionViewController") as! ActionViewController
+        actionViewController.originImage = image
+        if photoDetailViewController.viewModel.asset.localIdentifier == originImageInfo.id {
+            actionViewController.originImageSizeMB = originImageInfo.size
+        }
+        let controller = UINavigationController(rootViewController: actionViewController)
+        controller.modalPresentationStyle = .formSheet
+
+        present(controller, animated: true, completion: nil)
     }
 
     deinit {
@@ -97,11 +111,13 @@ class PhotoPageViewController: UIPageViewController {
             guard let data = data else { return }
             guard self.indexPath == indexPath else { return }
             
-            let formatString = string?.split(separator: ".").last?.uppercased()
+            // let formatString = string?.split(separator: ".").last?.uppercased()
             let imageSizeMB = Float(data.count) / (1024 * 1024)
             let imageSizeMBString = String(format: "%.3fMiB", imageSizeMB)
-            let pixelString = "\(asset.pixelWidth)×\(asset.pixelHeight)"
-            self.title = [imageSizeMBString, pixelString, formatString].compactMap { $0 }.joined(separator: "|")
+            let pixelString = "\(Int(asset.pixelWidth))×\(Int(asset.pixelHeight))"
+
+            self.originImageInfo = (asset.localIdentifier, imageSizeMB)
+            self.title = [imageSizeMBString, pixelString].compactMap { $0 }.joined(separator: "|")
         }
     }
 

@@ -23,6 +23,7 @@ class PhotoCollectionView: UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 1.0
         layout.minimumInteritemSpacing = 1.0    // Keep it const
+        layout.sectionInsetReference = .fromSafeArea
 
         super.init(frame: .zero, collectionViewLayout: layout)
 
@@ -44,7 +45,7 @@ extension PhotoCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
         guard let indexPath = previousIndexPathAndOffsetYAtCenter?.0,
             let offsetY = previousIndexPathAndOffsetYAtCenter?.1 else {
-            assertionFailure()
+//            assertionFailure()
             return proposedContentOffset
         }
 
@@ -84,9 +85,10 @@ extension PhotoCollectionView: UICollectionViewDelegateFlowLayout {
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         let numberInRow = collectionView.bounds.size.width < collectionView.bounds.size.height ? 4 : 7
         let totalSpacing = layout.minimumInteritemSpacing * CGFloat(numberInRow - 1)
-        let size = floor((collectionView.bounds.width - totalSpacing) / CGFloat(numberInRow))
+        let safeAreaMargin = safeAreaInsets.left + safeAreaInsets.right
+        let size = floor((collectionView.bounds.width - totalSpacing - safeAreaMargin) / CGFloat(numberInRow))
 
-        layout.minimumLineSpacing = (collectionView.bounds.width - size * CGFloat(numberInRow)) / CGFloat(numberInRow - 1)
+        layout.minimumLineSpacing = (collectionView.bounds.width - safeAreaMargin - size * CGFloat(numberInRow)) / CGFloat(numberInRow - 1)
 
         return CGSize(width: size, height: size)
     }

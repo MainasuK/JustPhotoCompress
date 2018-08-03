@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = UINavigationController(rootViewController: PhotoViewController())
         navigationController.navigationBar.barStyle = .black
         window?.rootViewController = navigationController
+        window?.tintColor = .red
 
         // window?.layer.speed = 0.2
 

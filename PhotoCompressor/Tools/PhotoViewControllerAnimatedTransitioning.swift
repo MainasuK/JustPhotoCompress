@@ -143,6 +143,7 @@ extension PhotoViewControllerAnimatedTransitioning {
         toView.frame = transitionContext.finalFrame(for: toViewController)
         fromView.alpha = 0.0
         containerView.insertSubview(toView, at: 0)
+        collectionView.cellForItem(at: indexPath)?.alpha = 0.0
 
         transitionItem.targetFrame = cell.convert(cell.bounds, to: nil)
         transitionItem.imageView = {
@@ -165,13 +166,14 @@ extension PhotoViewControllerAnimatedTransitioning {
 
             self.transitionItem.imageView?.frame = self.transitionItem.targetFrame!
             fromView.backgroundColor = .clear
-//            fromView.alpha = 0.0
             toView.alpha = 1.0
         }
         animator.addCompletion { position in
+            collectionView.cellForItem(at: indexPath)?.alpha = 1.0
             self.transitionItem.imageView?.removeFromSuperview()
             fromView.alpha = 1.0
             fromView.removeFromSuperview()
+
             transitionContext.completeTransition(true)
         }
 
@@ -368,6 +370,7 @@ extension PhotoViewControllerAnimatedTransitioning {
         toView.frame = transitionContext.finalFrame(for: toViewController)
         fromView.alpha = 0.0
         containerView.insertSubview(toView, at: 0)
+        collectionView.cellForItem(at: indexPath)?.alpha = 0.0
 
         // let targetFrame = collectionView.convert(cell.frame, to: toView)
         transitionItem.targetFrame = cell.convert(cell.bounds, to: nil)
@@ -390,6 +393,7 @@ extension PhotoViewControllerAnimatedTransitioning {
             toViewController.navigationController?.navigationBar.alpha = 1.0
         }
         animator.addCompletion { position in
+            collectionView.cellForItem(at: indexPath)?.alpha = 1.0
             self.transitionItem.imageView?.removeFromSuperview()
             fromView.alpha = 1.0
 
