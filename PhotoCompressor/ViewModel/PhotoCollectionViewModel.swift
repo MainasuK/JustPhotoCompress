@@ -21,7 +21,7 @@ final class PhotoCollectionViewModel: NSObject {
 
     var allPhotos: PHFetchResult<PHAsset> = {
         let options = PHFetchOptions()
-        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        // options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
         return PHAsset.fetchAssets(with: options)
     }() {
         didSet { collectionView?.reloadData() }
@@ -57,6 +57,7 @@ extension PhotoCollectionViewModel: PHPhotoLibraryChangeObserver {
 extension PhotoCollectionViewModel: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard PHPhotoLibrary.authorizationStatus() == .authorized else { return 0 }
         return allPhotos.count
     }
 
@@ -69,8 +70,6 @@ extension PhotoCollectionViewModel: UICollectionViewDataSource {
 
         let scale = UIScreen.main.scale * 2
         let targetSize = CGSize(width: layout.itemSize.width * scale, height: layout.itemSize.height * scale)
-        cell.label.text = "\(indexPath.row)"
-        cell.label.textColor = .red
 
         let options = PHImageRequestOptions()
         options.deliveryMode = .opportunistic

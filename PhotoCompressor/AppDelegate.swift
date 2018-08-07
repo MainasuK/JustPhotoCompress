@@ -17,13 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         UINavigationBar.appearance().backgroundColor = .darkText
-
-        let navigationController = UINavigationController(rootViewController: PhotoViewController())
-        navigationController.navigationBar.barStyle = .black
-        window?.rootViewController = navigationController
         window?.tintColor = .red
-
-        // window?.layer.speed = 0.2
 
         return true
     }

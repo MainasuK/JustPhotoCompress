@@ -29,6 +29,10 @@
 		DB274B5C2112BED800A2CE64 /* ActionOptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB274B5A2112BED800A2CE64 /* ActionOptionTableViewController.swift */; };
 		DB274B5D2112F88100A2CE64 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EE9F7210078FC004F086C /* DispatchQueue.swift */; };
 		DB274B5E2114427A00A2CE64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB0EE9FF210093F0004F086C /* Localizable.strings */; };
+		DB43893D21181F2600DE74DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB43893C21181F2300DE74DA /* Assets.xcassets */; };
+		DB43893E21181F3A00DE74DA /* Assets.xcassets in Frameworks */ = {isa = PBXBuildFile; fileRef = DB43893C21181F2300DE74DA /* Assets.xcassets */; };
+		DB43894A211822EA00DE74DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB43894D211822EA00DE74DA /* InfoPlist.strings */; };
+		DB43894B211822EA00DE74DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB43894D211822EA00DE74DA /* InfoPlist.strings */; };
 		DB4EB31F20FC9F0D0076F0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EB31E20FC9F0D0076F0A3 /* AppDelegate.swift */; };
 		DB4EB32120FC9F0D0076F0A3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EB32020FC9F0D0076F0A3 /* PhotoViewController.swift */; };
 		DB4EB32420FC9F0D0076F0A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32220FC9F0D0076F0A3 /* Main.storyboard */; };
@@ -82,6 +86,9 @@
 		DB274B4C211165BA00A2CE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB274B572111BC4E00A2CE64 /* PhotoCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCompressor.swift; sourceTree = "<group>"; };
 		DB274B5A2112BED800A2CE64 /* ActionOptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionOptionTableViewController.swift; sourceTree = "<group>"; };
+		DB43893C21181F2300DE74DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DB43894C211822EA00DE74DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB43894E211822EC00DE74DA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB4EB31B20FC9F0D0076F0A3 /* PhotoCompress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCompress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4EB31E20FC9F0D0076F0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB4EB32020FC9F0D0076F0A3 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB43893E21181F3A00DE74DA /* Assets.xcassets in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +148,16 @@
 				DB274B5A2112BED800A2CE64 /* ActionOptionTableViewController.swift */,
 				DB274B49211165BA00A2CE64 /* MainInterface.storyboard */,
 				DB274B4C211165BA00A2CE64 /* Info.plist */,
+				DB43893C21181F2300DE74DA /* Assets.xcassets */,
 			);
 			path = PhotoCompressActionExtension;
+			sourceTree = "<group>";
+		};
+		DB43893A21181E3300DE74DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DB4EB31220FC9F0D0076F0A3 = {
@@ -150,6 +166,7 @@
 				DB4EB31D20FC9F0D0076F0A3 /* PhotoCompressor */,
 				DB274B46211165BA00A2CE64 /* PhotoCompressActionExtension */,
 				DB4EB31C20FC9F0D0076F0A3 /* Products */,
+				DB43893A21181E3300DE74DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				DB4EB31E20FC9F0D0076F0A3 /* AppDelegate.swift */,
+				DB43894D211822EA00DE74DA /* InfoPlist.strings */,
 				DB0EE9FF210093F0004F086C /* Localizable.strings */,
 				DB4EB32520FC9F0E0076F0A3 /* Assets.xcassets */,
 				DB4EB32A20FC9F0E0076F0A3 /* Info.plist */,
@@ -301,6 +319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB274B4B211165BA00A2CE64 /* MainInterface.storyboard in Resources */,
+				DB43894B211822EA00DE74DA /* InfoPlist.strings in Resources */,
+				DB43893D21181F2600DE74DA /* Assets.xcassets in Resources */,
 				DB274B5E2114427A00A2CE64 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4EB32920FC9F0E0076F0A3 /* LaunchScreen.storyboard in Resources */,
+				DB43894A211822EA00DE74DA /* InfoPlist.strings in Resources */,
 				DB274B55211167E600A2CE64 /* MainInterface.storyboard in Resources */,
 				DB0EE9FD210093F0004F086C /* Localizable.strings in Resources */,
 				DB4EB32620FC9F0E0076F0A3 /* Assets.xcassets in Resources */,
@@ -385,6 +406,15 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		DB43894D211822EA00DE74DA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB43894C211822EA00DE74DA /* en */,
+				DB43894E211822EC00DE74DA /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		DB4EB32220FC9F0D0076F0A3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -407,6 +437,7 @@
 		DB274B50211165BA00A2CE64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A8K92XFF77;
 				INFOPLIST_FILE = PhotoCompressActionExtension/Info.plist;
@@ -426,6 +457,7 @@
 		DB274B51211165BA00A2CE64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A8K92XFF77;
 				INFOPLIST_FILE = PhotoCompressActionExtension/Info.plist;

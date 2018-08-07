@@ -8,6 +8,7 @@
 
 "Photos" = "Photos";
 "Compress" = "Compress";
+"Close" = "Close";
 
 "Size" = "Size";
 "Large" = "Large";
@@ -23,3 +24,7 @@
 "Original: %.3fMiB" = "Original: %.3fMiB";
 "Not Found Photo" = "Not Found Photo";
 
+"Access Photo Library" = "Needs Access Photo Library";
+"Please Allow App Access Photo" = "Please Open Settings Allow App Access Photo Library";
+
+"Settings" = "Settings";

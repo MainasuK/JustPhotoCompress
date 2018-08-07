@@ -8,6 +8,7 @@
 
 "Photos" = "照片";
 "Compress" = "压缩";
+"Close" = "关闭";
 
 "Size" = "尺寸";
 "Large" = "大";
@@ -21,4 +22,9 @@
 
 "Cancel" = "取消";
 "Original: %.3fMiB" = "原件: %.3fMiB";
-"Not Found Photo" = "没有找到图片 ";
+"Not Found Photo" = "没有找到图片";
+
+"Access Photo Library" = "需要照片访问权限";
+"Please Allow App Access Photo" = "请打开设置打开照片访问权限";
+
+"Settings" = "设置";

@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="646"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-lY-g9W">
-                                <rect key="frame" x="0.0" y="879" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="734" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="kk3-x2-NR2"/>
                                 </constraints>
@@ -45,18 +45,19 @@
                         <viewLayoutGuide key="safeArea" id="NGh-cn-N56"/>
                     </view>
                     <navigationItem key="navigationItem" id="cEy-Y8-a7B">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="EtD-Of-q1k">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="EtD-Of-q1k">
                             <connections>
                                 <action selector="doneBarButtonItemPressed:" destination="Zrn-Ts-YVC" id="WJ7-fd-KgB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="fV3-ve-GyZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="fV3-ve-GyZ">
                             <connections>
                                 <action selector="actionBarButtonItemPressed:" destination="Zrn-Ts-YVC" id="Z8H-w8-TDK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="closeBarButtonItem" destination="EtD-Of-q1k" id="Jgh-oz-v7V"/>
                         <outlet property="imageView" destination="sgW-Px-Icu" id="1gk-bG-2Yr"/>
                         <outlet property="qualityBarButtonItem" destination="pU6-Sc-NHT" id="CcN-Dy-SL6"/>
                         <outlet property="sizeBarButtonItem" destination="Si5-jJ-zXp" id="YxH-tI-KQA"/>

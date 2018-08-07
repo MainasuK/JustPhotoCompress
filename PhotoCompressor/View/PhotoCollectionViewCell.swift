@@ -19,7 +19,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }
 
     let imageView = UIImageView()
-    let label = UILabel()
 
     var representedAssetIdentifier: String!
 
@@ -35,11 +34,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-
-        label.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(label)
-        label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
 
     required init?(coder aDecoder: NSCoder) {

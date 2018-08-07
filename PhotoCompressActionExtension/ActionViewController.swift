@@ -14,6 +14,12 @@ let blockUTI = "com.mainasuk.PhotoCompressor.Item"
 
 class ActionViewController: UIViewController {
 
+    @IBOutlet weak var closeBarButtonItem: UIBarButtonItem! {
+        didSet {
+            closeBarButtonItem.title = NSLocalizedString("Close", comment: "")
+        }
+    }
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var qualityBarButtonItem: UIBarButtonItem!
@@ -127,6 +133,7 @@ class ActionViewController: UIViewController {
     @IBAction func actionBarButtonItemPressed(_ sender: UIBarButtonItem) {
         guard let image = originImage else { return }
         let controller = UIActivityViewController(activityItems: [image, ActionExtensionBlockerItem()], applicationActivities: nil)
+
         present(controller, animated: true, completion: nil)
     }
 
