@@ -96,7 +96,7 @@ final class ActionOptionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCellStyleValue1") ??
-            UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "UITableViewCellStyleValue1")
+            UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "UITableViewCellStyleValue1")
 
         cell.textLabel?.text = viewModel.option(at: indexPath)
         cell.accessoryType   = .disclosureIndicator

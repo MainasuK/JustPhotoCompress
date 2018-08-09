@@ -24,7 +24,7 @@
 "Original: %.3fMiB" = "Original: %.3fMiB";
 "Not Found Photo" = "Not Found Photo";
 
-"Access Photo Library" = "Needs Access Photo Library";
+"Access Photo Library" = "Needs Access Photo Library to compress your photo";
 "Please Allow App Access Photo" = "Please Open Settings Allow App Access Photo Library";
 
 "Settings" = "Settings";

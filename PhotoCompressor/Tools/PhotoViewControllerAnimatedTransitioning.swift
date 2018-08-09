@@ -17,7 +17,7 @@ protocol PhotoViewControllerTransitioningDelegate: class {
 class PhotoViewControllerAnimatedTransitioning: NSObject {
 
     let transitionItem: PhotoTransitionItem
-    let operation: UINavigationController.Operation
+    let operation: UINavigationControllerOperation
     let panGestureRecognizer: UIPanGestureRecognizer
 
     private var popInteractiveTransitionAnimator = PhotoViewControllerAnimatedTransitioning.animator(initialVelocity: .zero)
@@ -33,7 +33,7 @@ class PhotoViewControllerAnimatedTransitioning: NSObject {
         return UIViewPropertyAnimator(duration: 0.5, timingParameters: timingParameters)
     }
 
-    init?(operation: UINavigationController.Operation, transitionItem item: PhotoTransitionItem, panGestureRecognizer: UIPanGestureRecognizer) {
+    init?(operation: UINavigationControllerOperation, transitionItem item: PhotoTransitionItem, panGestureRecognizer: UIPanGestureRecognizer) {
         if operation == .none { return nil }
 
         self.operation = operation
@@ -48,7 +48,7 @@ class PhotoViewControllerAnimatedTransitioning: NSObject {
 extension PhotoViewControllerAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return TimeInterval(UINavigationController.hideShowBarDuration)
+        return TimeInterval(UINavigationControllerHideShowBarDuration)
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -145,6 +145,7 @@ extension PhotoViewControllerAnimatedTransitioning {
         containerView.insertSubview(toView, at: 0)
         collectionView.cellForItem(at: indexPath)?.alpha = 0.0
 
+        toViewController.view.layoutIfNeeded()
         transitionItem.targetFrame = cell.convert(cell.bounds, to: nil)
         transitionItem.imageView = {
             let imageView = UIImageView(frame: containerView.convert(transitionItem.initialFrame, from: nil))
@@ -368,11 +369,12 @@ extension PhotoViewControllerAnimatedTransitioning {
 
         toView.alpha = 0.0
         toView.frame = transitionContext.finalFrame(for: toViewController)
+        toView.layoutIfNeeded()
+
         fromView.alpha = 0.0
         containerView.insertSubview(toView, at: 0)
         collectionView.cellForItem(at: indexPath)?.alpha = 0.0
 
-        // let targetFrame = collectionView.convert(cell.frame, to: toView)
         transitionItem.targetFrame = cell.convert(cell.bounds, to: nil)
         transitionItem.imageView = {
             let imageView = UIImageView(frame: AVMakeRect(aspectRatio: aspectRatio, insideRect: containerView.convert(transitionItem.initialFrame, to: nil)))

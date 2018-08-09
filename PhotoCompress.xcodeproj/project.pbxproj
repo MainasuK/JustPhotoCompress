@@ -29,8 +29,6 @@
 		DB274B5C2112BED800A2CE64 /* ActionOptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB274B5A2112BED800A2CE64 /* ActionOptionTableViewController.swift */; };
 		DB274B5D2112F88100A2CE64 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0EE9F7210078FC004F086C /* DispatchQueue.swift */; };
 		DB274B5E2114427A00A2CE64 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB0EE9FF210093F0004F086C /* Localizable.strings */; };
-		DB43893D21181F2600DE74DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB43893C21181F2300DE74DA /* Assets.xcassets */; };
-		DB43893E21181F3A00DE74DA /* Assets.xcassets in Frameworks */ = {isa = PBXBuildFile; fileRef = DB43893C21181F2300DE74DA /* Assets.xcassets */; };
 		DB43894A211822EA00DE74DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB43894D211822EA00DE74DA /* InfoPlist.strings */; };
 		DB43894B211822EA00DE74DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB43894D211822EA00DE74DA /* InfoPlist.strings */; };
 		DB4EB31F20FC9F0D0076F0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4EB31E20FC9F0D0076F0A3 /* AppDelegate.swift */; };
@@ -40,6 +38,7 @@
 		DB4EB32920FC9F0E0076F0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32720FC9F0E0076F0A3 /* LaunchScreen.storyboard */; };
 		DBDFC6B521082AE500550D85 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFC6B421082AE500550D85 /* PhotoDetailViewModel.swift */; };
 		DBDFC6B72108671400550D85 /* PhotoViewTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFC6B62108671400550D85 /* PhotoViewTransitionController.swift */; };
+		DBE9A1022119838F00364F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32520FC9F0E0076F0A3 /* Assets.xcassets */; };
 		DBF4C03F20FCAC34009D7106 /* PhotoCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4C03E20FCAC34009D7106 /* PhotoCollectionViewModel.swift */; };
 		DBF4C04120FCB2AF009D7106 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4C04020FCB2AF009D7106 /* PhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -86,7 +85,6 @@
 		DB274B4C211165BA00A2CE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB274B572111BC4E00A2CE64 /* PhotoCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCompressor.swift; sourceTree = "<group>"; };
 		DB274B5A2112BED800A2CE64 /* ActionOptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionOptionTableViewController.swift; sourceTree = "<group>"; };
-		DB43893C21181F2300DE74DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB43894C211822EA00DE74DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DB43894E211822EC00DE74DA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		DB4EB31B20FC9F0D0076F0A3 /* PhotoCompress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCompress.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB43893E21181F3A00DE74DA /* Assets.xcassets in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +145,6 @@
 				DB274B5A2112BED800A2CE64 /* ActionOptionTableViewController.swift */,
 				DB274B49211165BA00A2CE64 /* MainInterface.storyboard */,
 				DB274B4C211165BA00A2CE64 /* Info.plist */,
-				DB43893C21181F2300DE74DA /* Assets.xcassets */,
 			);
 			path = PhotoCompressActionExtension;
 			sourceTree = "<group>";
@@ -320,7 +316,7 @@
 			files = (
 				DB274B4B211165BA00A2CE64 /* MainInterface.storyboard in Resources */,
 				DB43894B211822EA00DE74DA /* InfoPlist.strings in Resources */,
-				DB43893D21181F2600DE74DA /* Assets.xcassets in Resources */,
+				DBE9A1022119838F00364F4E /* Assets.xcassets in Resources */,
 				DB274B5E2114427A00A2CE64 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,7 +433,7 @@
 		DB274B50211165BA00A2CE64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ExtensionAppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A8K92XFF77;
 				INFOPLIST_FILE = PhotoCompressActionExtension/Info.plist;
@@ -457,7 +453,7 @@
 		DB274B51211165BA00A2CE64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ExtensionAppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A8K92XFF77;
 				INFOPLIST_FILE = PhotoCompressActionExtension/Info.plist;
@@ -526,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -582,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -606,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mainasuk.PhotoCompressor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -625,7 +621,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mainasuk.PhotoCompressor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
