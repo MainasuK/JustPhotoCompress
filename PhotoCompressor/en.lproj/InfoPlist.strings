@@ -7,6 +7,6 @@
 */
 
 CFBundleDisplayName = "Photo Compress";
-NSPhotoLibraryUsageDescription = "App needs read photo library";
+NSPhotoLibraryUsageDescription = "App needs read photo library to compress your photo";
 
 

@@ -56,7 +56,7 @@ class PhotoViewController: UIViewController {
 
             let openSettings = NSLocalizedString("Settings", comment: "")
             let openSettingsAction = UIAlertAction(title: openSettings, style: .default) { _ in
-                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
                     UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                 }
             }
@@ -141,7 +141,7 @@ extension PhotoViewController {
 extension PhotoViewController: PhotoCollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = PhotoPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewController.OptionsKey.interPageSpacing : 8.0])
+        let controller = PhotoPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 8.0])
         controller.viewModel = viewModel
         controller.indexPath = indexPath
         transitionController?.indexPathToTransition = indexPath

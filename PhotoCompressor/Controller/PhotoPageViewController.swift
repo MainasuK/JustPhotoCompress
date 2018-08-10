@@ -70,10 +70,10 @@ class PhotoPageViewController: UIPageViewController {
         isControlHidden = !isControlHidden
 
         let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
-        #warning("Check this heck")
+        // #warning("Check this heck")
         // 2018.07.25: iOS 12 beta 4 OK!
         assert(statusBarWindow != nil)
-        UIView.animate(withDuration: TimeInterval(UINavigationController.hideShowBarDuration)) {
+        UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
             self.navigationController?.navigationBar.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
             statusBarWindow?.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
         }

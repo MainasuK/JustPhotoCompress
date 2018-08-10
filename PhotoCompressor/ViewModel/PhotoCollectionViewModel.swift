@@ -21,8 +21,15 @@ final class PhotoCollectionViewModel: NSObject {
 
     var allPhotos: PHFetchResult<PHAsset> = {
         let options = PHFetchOptions()
-        // options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        return PHAsset.fetchAssets(with: options)
+        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+
+        let albums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+        guard albums.count == 1, let allPhotos = albums.firstObject else {
+            options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+            return PHAsset.fetchAssets(with: options)
+        }
+
+        return PHAsset.fetchAssets(in: allPhotos, options: options)
     }() {
         didSet { collectionView?.reloadData() }
     }

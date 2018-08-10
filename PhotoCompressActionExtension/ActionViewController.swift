@@ -133,6 +133,7 @@ class ActionViewController: UIViewController {
     @IBAction func actionBarButtonItemPressed(_ sender: UIBarButtonItem) {
         guard let image = originImage else { return }
         let controller = UIActivityViewController(activityItems: [image, ActionExtensionBlockerItem()], applicationActivities: nil)
+        controller.popoverPresentationController?.barButtonItem = sender
 
         present(controller, animated: true, completion: nil)
     }
@@ -272,16 +273,16 @@ extension ActionViewController: ActionSizeOptionTableViewModelDelegate {
 }
 
 class ActionExtensionBlockerItem: NSObject, UIActivityItemSource {
-    func activityViewController(_ activityViewController: UIActivityViewController, dataTypeIdentifierForActivityType activityType: UIActivity.ActivityType?) -> String {
+    func activityViewController(_ activityViewController: UIActivityViewController, dataTypeIdentifierForActivityType activityType: UIActivityType?) -> String {
         return blockUTI
     }
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
         return NSObject()
     }
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
         return ""
     }
-    func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivity.ActivityType?, suggestedSize size: CGSize) -> UIImage? {
+    func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivityType?, suggestedSize size: CGSize) -> UIImage? {
         return nil
     }
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {

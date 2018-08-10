@@ -7,4 +7,4 @@
 */
 
 CFBundleDisplayName = "图片压缩";
-NSPhotoLibraryUsageDescription = "应用需要读取相册";
+NSPhotoLibraryUsageDescription = "应用需要读取相册进行图片压缩";
