@@ -41,9 +41,15 @@ final class PhotoViewTransitionController: NSObject {
         if sender.state == .began && popInteractiveTransitioning == nil {
             initiallyInteractive = true
             navigationController?.popViewController(animated: true)
+            NotificationCenter.default.post(name: PhotoViewTransitionController.didPopViewController, object: self)
         }
     }
 
+}
+
+extension PhotoViewTransitionController {
+    static let didPopViewController = NSNotification.Name("PhotoViewTransitionController.didPopViewController")
+    static let transitionEnded = NSNotification.Name("PhotoViewTransitionController.transitionEnded")
 }
 
 
@@ -162,8 +168,9 @@ extension PhotoViewTransitionController: UINavigationControllerDelegate {
 extension PhotoViewTransitionController: PhotoViewControllerTransitioningDelegate {
 
     func animationEnded(_ transitionCompleted: Bool) {
-        consolePrint(transitionCompleted)
-
+        consolePrint("transitionCompleted \(transitionCompleted)")
+        NotificationCenter.default.post(name: PhotoViewTransitionController.transitionEnded, object: self)
+        
         indexPathToTransition = nil
         initiallyInteractive = false
         popInteractiveTransitioning = nil

@@ -58,6 +58,18 @@ extension PhotoPageViewController {
 
         resetImageInfoOnTitle(at: indexPath)
         resetRightButtonItem(with: controller.viewModel)
+
+        // Prevent page view controller swipe when user interactive pop
+        NotificationCenter.default.addObserver(forName: PhotoViewTransitionController.didPopViewController, object: nil, queue: .main) { [weak self] _ in
+            consolePrint("Pop transition on fly. Disable UIPageViewController")
+            self?.delegate = nil
+            self?.dataSource = nil
+        }
+        NotificationCenter.default.addObserver(forName: PhotoViewTransitionController.transitionEnded, object: nil, queue: .main) { [weak self] _ in
+            consolePrint("Pop transition finish. Enable UIPageViewController")
+            self?.delegate = self
+            self?.dataSource = self
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
