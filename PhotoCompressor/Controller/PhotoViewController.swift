@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import os.activity
 
 class PhotoViewController: UIViewController {
 
@@ -56,7 +57,7 @@ class PhotoViewController: UIViewController {
 
             let openSettings = NSLocalizedString("Settings", comment: "")
             let openSettingsAction = UIAlertAction(title: openSettings, style: .default) { _ in
-                if let appSettings = URL(string: UIApplicationOpenSettingsURLString) {
+                if let appSettings = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
                 }
             }
@@ -81,6 +82,8 @@ class PhotoViewController: UIViewController {
                     }
                 }
             }
+        @unknown default:
+            assertionFailure()
         }
     }
 
@@ -89,12 +92,9 @@ class PhotoViewController: UIViewController {
         collectionView.photoCollectionViewDelegate = self
         viewModel.collectionView = collectionView
 
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.frame = view.bounds
         view.addSubview(collectionView)
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
     private func scrollToBottom(animated: Bool = false) {
@@ -141,7 +141,7 @@ extension PhotoViewController {
 extension PhotoViewController: PhotoCollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = PhotoPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 8.0])
+        let controller = PhotoPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewController.OptionsKey.interPageSpacing : 8.0])
         controller.viewModel = viewModel
         controller.indexPath = indexPath
         transitionController?.indexPathToTransition = indexPath

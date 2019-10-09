@@ -6,7 +6,7 @@
 //  Copyright © 2018年 MainasuK. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Photos
 
 final class PhotoCollectionViewModel: NSObject {

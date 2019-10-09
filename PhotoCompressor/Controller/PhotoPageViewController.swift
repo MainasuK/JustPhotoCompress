@@ -31,6 +31,15 @@ class PhotoPageViewController: UIPageViewController {
     private lazy var progressItem = UIBarButtonItem(customView: progressView)
     private lazy var compressItem = UIBarButtonItem(title: NSLocalizedString("Compress", comment: ""), style: .plain, target: self, action: #selector(PhotoPageViewController.compressButtonPressed(_:)))
 
+
+    deinit {
+        consolePrint("deinit")
+    }
+
+}
+
+extension PhotoPageViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -66,16 +75,27 @@ class PhotoPageViewController: UIPageViewController {
         return controller
     }
 
+}
+
+extension PhotoPageViewController {
+
     @objc func tap(_ sender: UITapGestureRecognizer) {
         isControlHidden = !isControlHidden
 
-        let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
         // #warning("Check this heck")
-        // 2018.07.25: iOS 12 beta 4 OK!
-        assert(statusBarWindow != nil)
-        UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
-            self.navigationController?.navigationBar.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
-            statusBarWindow?.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
+        if #available(iOS 13.0, *) {
+            // 2019.09.29: iOS 13 GM break!
+            UIView.animate(withDuration: TimeInterval(UINavigationController.hideShowBarDuration)) {
+                self.navigationController?.navigationBar.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
+            }
+        } else {
+            // 2018.07.25: iOS 12 beta 4 OK!
+            let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
+            assert(statusBarWindow != nil)
+            UIView.animate(withDuration: TimeInterval(UINavigationController.hideShowBarDuration)) {
+                self.navigationController?.navigationBar.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
+                statusBarWindow?.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
+            }
         }
 
         // Note: set alpha back to 1.0 in pop transition
@@ -95,10 +115,6 @@ class PhotoPageViewController: UIPageViewController {
         controller.modalPresentationStyle = .formSheet
 
         present(controller, animated: true, completion: nil)
-    }
-
-    deinit {
-        consolePrint("deinit")
     }
 
     private func resetImageInfoOnTitle(at indexPath: IndexPath) {

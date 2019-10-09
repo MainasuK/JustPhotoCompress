@@ -75,7 +75,7 @@ class ActionViewController: UIViewController {
 
         var imageFound = false
         for item in extensionContext!.inputItems as! [NSExtensionItem] {
-            for provider in item.attachments! as! [NSItemProvider] where provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
+            for provider in item.attachments ?? [] where provider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
                 weak var weakImageView = imageView
                 provider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil, completionHandler: { (imageURL, error) in
                     consolePrint(error)
@@ -273,16 +273,16 @@ extension ActionViewController: ActionSizeOptionTableViewModelDelegate {
 }
 
 class ActionExtensionBlockerItem: NSObject, UIActivityItemSource {
-    func activityViewController(_ activityViewController: UIActivityViewController, dataTypeIdentifierForActivityType activityType: UIActivityType?) -> String {
+    func activityViewController(_ activityViewController: UIActivityViewController, dataTypeIdentifierForActivityType activityType: UIActivity.ActivityType?) -> String {
         return blockUTI
     }
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
         return NSObject()
     }
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
         return ""
     }
-    func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivityType?, suggestedSize size: CGSize) -> UIImage? {
+    func activityViewController(_ activityViewController: UIActivityViewController, thumbnailImageForActivityType activityType: UIActivity.ActivityType?, suggestedSize size: CGSize) -> UIImage? {
         return nil
     }
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {

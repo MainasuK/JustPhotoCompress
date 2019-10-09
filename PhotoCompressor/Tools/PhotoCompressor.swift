@@ -50,7 +50,9 @@ public class PhotoCompressor {
     }
 
     public func jpgData(for image: UIImage, of compressionQuality: Quality, of size: Size) -> Data? {
-        return UIImageJPEGRepresentation(image.scaleFitSize(with: size.rawValue), compressionQuality.rawValue)
+        let resizeImage = image.scaleFitSize(with: size.rawValue)
+        let compressedImageData = resizeImage.jpegData(compressionQuality: compressionQuality.rawValue)
+        return compressedImageData
     }
 
     public func imageInfo(of data: Data) -> (short: String, large: String) {
