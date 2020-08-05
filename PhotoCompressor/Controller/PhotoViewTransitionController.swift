@@ -40,6 +40,16 @@ final class PhotoViewTransitionController: NSObject {
     @objc func initInteractiveTransition(_ sender: UIPanGestureRecognizer) {
         if sender.state == .began && popInteractiveTransitioning == nil {
             initiallyInteractive = true
+            
+            // restore control state before transition
+            if let fromViewController = navigationController?.topViewController as? PhotoPageViewController {
+                fromViewController.isControlHidden = false
+                fromViewController.navigationController?.setNeedsStatusBarAppearanceUpdate()
+            } else {
+                assertionFailure()
+            }
+            
+            navigationController?.setNavigationBarHidden(false, animated: false)
             navigationController?.popViewController(animated: true)
         }
     }
@@ -72,7 +82,7 @@ extension PhotoViewTransitionController: UIGestureRecognizerDelegate {
 // MARK: - UINavigationControllerDelegate
 extension PhotoViewTransitionController: UINavigationControllerDelegate {
 
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         switch operation {
         case .push:
             guard let photoPageViewController = toVC as? PhotoPageViewController,

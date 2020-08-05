@@ -36,6 +36,7 @@
 		DB4EB32420FC9F0D0076F0A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32220FC9F0D0076F0A3 /* Main.storyboard */; };
 		DB4EB32620FC9F0E0076F0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32520FC9F0E0076F0A3 /* Assets.xcassets */; };
 		DB4EB32920FC9F0E0076F0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32720FC9F0E0076F0A3 /* LaunchScreen.storyboard */; };
+		DBBBF1DE24DAF69900F2AC98 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBBF1DD24DAF69900F2AC98 /* NavigationController.swift */; };
 		DBDFC6B521082AE500550D85 /* PhotoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFC6B421082AE500550D85 /* PhotoDetailViewModel.swift */; };
 		DBDFC6B72108671400550D85 /* PhotoViewTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDFC6B62108671400550D85 /* PhotoViewTransitionController.swift */; };
 		DBE9A1022119838F00364F4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB4EB32520FC9F0E0076F0A3 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		DB4EB32520FC9F0E0076F0A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB4EB32820FC9F0E0076F0A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DB4EB32A20FC9F0E0076F0A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBBBF1DD24DAF69900F2AC98 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		DBDFC6B421082AE500550D85 /* PhotoDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewModel.swift; sourceTree = "<group>"; };
 		DBDFC6B62108671400550D85 /* PhotoViewTransitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTransitionController.swift; sourceTree = "<group>"; };
 		DBF4C03E20FCAC34009D7106 /* PhotoCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewModel.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				DBDFC6B62108671400550D85 /* PhotoViewTransitionController.swift */,
 				DB0EE9F52100719E004F086C /* PhotoPageViewController.swift */,
 				DB0EE9F921007D24004F086C /* PhotoDetailViewController.swift */,
+				DBBBF1DD24DAF69900F2AC98 /* NavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				DB0EE9F8210078FC004F086C /* DispatchQueue.swift in Sources */,
 				DB0EE9F62100719E004F086C /* PhotoPageViewController.swift in Sources */,
 				DB0EEA02210599AC004F086C /* PhotoViewControllerAnimatedTransitioning.swift in Sources */,
+				DBBBF1DE24DAF69900F2AC98 /* NavigationController.swift in Sources */,
 				DB274B5B2112BED800A2CE64 /* ActionOptionTableViewController.swift in Sources */,
 				DBF4C03F20FCAC34009D7106 /* PhotoCollectionViewModel.swift in Sources */,
 				DB0EE9FA21007D24004F086C /* PhotoDetailViewController.swift in Sources */,
@@ -445,7 +449,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mainasuk.PhotoCompressor.PhotoCompressActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -465,7 +468,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mainasuk.PhotoCompressor.PhotoCompressActionExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -529,6 +531,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -584,6 +587,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -602,7 +606,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mainasuk.PhotoCompressor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -621,7 +624,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mainasuk.PhotoCompressor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

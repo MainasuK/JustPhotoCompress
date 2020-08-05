@@ -7,7 +7,7 @@
 //
 
 
-import Foundation
+import UIKit
 import Photos
 
 protocol PhotoDetailViewModelDelegate: class {

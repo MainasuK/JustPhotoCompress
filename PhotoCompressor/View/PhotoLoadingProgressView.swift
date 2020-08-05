@@ -69,7 +69,7 @@ class PhotoLoadingProgressView: UIView {
             return path.cgPath
         }()
         maskLayer.lineWidth = radius
-        maskLayer.lineCap = kCALineCapButt
+        maskLayer.lineCap = CAShapeLayerLineCap.butt
         maskLayer.fillColor = UIColor.clear.cgColor
         maskLayer.strokeColor = UIColor.black.cgColor
         maskLayer.strokeEnd = progress

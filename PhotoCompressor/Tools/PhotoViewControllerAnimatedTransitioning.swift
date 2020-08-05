@@ -17,7 +17,7 @@ protocol PhotoViewControllerTransitioningDelegate: class {
 class PhotoViewControllerAnimatedTransitioning: NSObject {
 
     let transitionItem: PhotoTransitionItem
-    let operation: UINavigationControllerOperation
+    let operation: UINavigationController.Operation
     let panGestureRecognizer: UIPanGestureRecognizer
 
     private var popInteractiveTransitionAnimator = PhotoViewControllerAnimatedTransitioning.animator(initialVelocity: .zero)
@@ -33,7 +33,7 @@ class PhotoViewControllerAnimatedTransitioning: NSObject {
         return UIViewPropertyAnimator(duration: 0.5, timingParameters: timingParameters)
     }
 
-    init?(operation: UINavigationControllerOperation, transitionItem item: PhotoTransitionItem, panGestureRecognizer: UIPanGestureRecognizer) {
+    init?(operation: UINavigationController.Operation, transitionItem item: PhotoTransitionItem, panGestureRecognizer: UIPanGestureRecognizer) {
         if operation == .none { return nil }
 
         self.operation = operation
@@ -48,7 +48,7 @@ class PhotoViewControllerAnimatedTransitioning: NSObject {
 extension PhotoViewControllerAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return TimeInterval(UINavigationControllerHideShowBarDuration)
+        return TimeInterval(UINavigationController.hideShowBarDuration)
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -161,10 +161,6 @@ extension PhotoViewControllerAnimatedTransitioning {
         let animator = PhotoViewControllerAnimatedTransitioning.animator(initialVelocity: .zero)
 
         animator.addAnimations {
-            let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
-            toViewController.navigationController?.navigationBar.alpha = 1.0
-            statusBarWindow?.alpha = 1.0
-
             self.transitionItem.imageView?.frame = self.transitionItem.targetFrame!
             fromView.backgroundColor = .clear
             toView.alpha = 1.0
@@ -390,8 +386,6 @@ extension PhotoViewControllerAnimatedTransitioning {
         animator.addAnimations {
             fromView.backgroundColor = .clear
             toView.alpha = 1.0
-            let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
-            statusBarWindow?.alpha = 1.0
             toViewController.navigationController?.navigationBar.alpha = 1.0
         }
         animator.addCompletion { position in
@@ -399,11 +393,12 @@ extension PhotoViewControllerAnimatedTransitioning {
             self.transitionItem.imageView?.removeFromSuperview()
             fromView.alpha = 1.0
 
-            let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
-            let alpha = (position == .end) ? 1.0 : (photoPageViewController.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0)
-            statusBarWindow?.alpha = alpha
-            toViewController.navigationController?.navigationBar.alpha = alpha
-
+            if position == .end {
+                toViewController.navigationController?.setNavigationBarHidden(false, animated: false)
+            } else {
+                photoPageViewController.navigationController?.setNavigationBarHidden(photoPageViewController.isControlHidden, animated: false)
+            }
+            
             transitionContext.completeTransition(position == .end)
         }
 

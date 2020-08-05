@@ -6,6 +6,7 @@
 //  Copyright © 2018年 MainasuK. All rights reserved.
 //
 
+import os
 import UIKit
 import Photos
 
@@ -14,7 +15,14 @@ class PhotoPageViewController: UIPageViewController {
     var viewModel: PhotoCollectionViewModel!
     var indexPath: IndexPath!
 
-    var isControlHidden = false     // hidden control except image
+    // hidden control except image
+    var isControlHidden = false {
+        didSet {
+//            UIView.animate(withDuration: TimeInterval(UINavigationController.hideShowBarDuration)) {
+                self.navigationController?.setNeedsStatusBarAppearanceUpdate()                
+//            }
+        }
+    }
     weak var transitionImage: UIImage?
 
     var originImageInfo: (id: String, size: Float) = ("", 0.0)
@@ -30,6 +38,19 @@ class PhotoPageViewController: UIPageViewController {
 
     private lazy var progressItem = UIBarButtonItem(customView: progressView)
     private lazy var compressItem = UIBarButtonItem(title: NSLocalizedString("Compress", comment: ""), style: .plain, target: self, action: #selector(PhotoPageViewController.compressButtonPressed(_:)))
+    
+    
+    deinit {
+        os_log("%{public}s[%{public}ld], %{public}s: deinit", ((#file as NSString).lastPathComponent), #line, #function)
+    }
+    
+}
+
+extension PhotoPageViewController {
+    
+    override var prefersStatusBarHidden: Bool {
+        return isControlHidden
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,16 +90,10 @@ class PhotoPageViewController: UIPageViewController {
     @objc func tap(_ sender: UITapGestureRecognizer) {
         isControlHidden = !isControlHidden
 
-        let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIWindow
-        // #warning("Check this heck")
-        // 2018.07.25: iOS 12 beta 4 OK!
-        assert(statusBarWindow != nil)
-        UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
-            self.navigationController?.navigationBar.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
-            statusBarWindow?.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
-        }
-
-        // Note: set alpha back to 1.0 in pop transition
+        navigationController?.setNavigationBarHidden(isControlHidden, animated: false)
+//        UIView.animate(withDuration: TimeInterval(UINavigationController.hideShowBarDuration)) {
+//            self.navigationController?.navigationBar.alpha = self.isControlHidden ? CGFloat.leastNormalMagnitude : 1.0
+//        }
     }
 
     @objc func compressButtonPressed(_ sender: UIBarButtonItem) {
@@ -95,10 +110,6 @@ class PhotoPageViewController: UIPageViewController {
         controller.modalPresentationStyle = .formSheet
 
         present(controller, animated: true, completion: nil)
-    }
-
-    deinit {
-        consolePrint("deinit")
     }
 
     private func resetImageInfoOnTitle(at indexPath: IndexPath) {
