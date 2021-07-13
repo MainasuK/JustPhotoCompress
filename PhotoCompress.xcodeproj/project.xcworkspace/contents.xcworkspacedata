@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/MainasuK/Developer.localized/Swift/PhotoCompressor/PhotoCompress.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1300"
-   wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,21 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DB274B44211165B900A2CE64"
-               BuildableName = "PhotoCompressActionExtension.appex"
-               BlueprintName = "PhotoCompressActionExtension"
-               ReferencedContainer = "container:PhotoCompress.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DB4EB31A20FC9F0D0076F0A3"
+               BlueprintIdentifier = "DB953D68268B9E3F0096F751"
                BuildableName = "PhotoCompress.app"
                BlueprintName = "PhotoCompress"
                ReferencedContainer = "container:PhotoCompress.xcodeproj">
@@ -38,16 +23,16 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DB274B44211165B900A2CE64"
-            BuildableName = "PhotoCompressActionExtension.appex"
-            BlueprintName = "PhotoCompressActionExtension"
+            BlueprintIdentifier = "DB953D68268B9E3F0096F751"
+            BuildableName = "PhotoCompress.app"
+            BlueprintName = "PhotoCompress"
             ReferencedContainer = "container:PhotoCompress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,44 +40,44 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = ""
       selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      disableMainThreadChecker = "YES"
       launchStyle = "0"
-      askForAppToLaunch = "Yes"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugXPCServices = "NO"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
-         runnableDebuggingMode = "0"
-         BundleIdentifier = "com.mainasuk.PhotoCompressor"
-         RemotePath = "/var/containers/Bundle/Application/C7DEACF6-1804-44E4-B2A5-0CFC0B98A819/PhotoCompress.app">
-      </RemoteRunnable>
-      <MacroExpansion>
+      enableGPUFrameCaptureMode = "3"
+      enableGPUValidationMode = "1"
+      allowLocationSimulation = "NO"
+      viewDebuggingEnabled = "No"
+      queueDebuggingEnabled = "No"
+      GPUProfilerEnabled = "No">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DB4EB31A20FC9F0D0076F0A3"
+            BlueprintIdentifier = "DB953D68268B9E3F0096F751"
             BuildableName = "PhotoCompress.app"
             BlueprintName = "PhotoCompress"
             ReferencedContainer = "container:PhotoCompress.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "2">
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DB4EB31A20FC9F0D0076F0A3"
+            BlueprintIdentifier = "DB953D68268B9E3F0096F751"
             BuildableName = "PhotoCompress.app"
             BlueprintName = "PhotoCompress"
             ReferencedContainer = "container:PhotoCompress.xcodeproj">
@@ -100,7 +85,7 @@
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
