@@ -8,9 +8,11 @@
 
 import os.log
 import SwiftUI
+import Combine
 import Photos
 import Kingfisher
 
+@MainActor
 class PhotoThumbnailViewModel: ObservableObject {
 
     let logger = Logger(subsystem: "PhotoThumbnailViewModel", category: "ViewModel")
@@ -20,18 +22,39 @@ class PhotoThumbnailViewModel: ObservableObject {
         context.photoService.imageManager
     }
 
+    var disposeBag = Set<AnyCancellable>()
+
     // input
     let index: Int
 
-    // output
-    var isFirstAppear = true
+    let isAppear = CurrentValueSubject<Bool, Never>(false)
+    let frame = CurrentValueSubject<CGRect, Never>(.zero)
+
     var imageRequestID: PHImageRequestID?
-    var frame: CGRect? = .zero
+
+    // output
     @Published var photo: UIImage?
 
     init(context: AppContext, index: Int) {
         self.context = context
         self.index = index
+
+        Publishers.CombineLatest(
+            isAppear.removeDuplicates(),
+            frame.map { $0.size }.removeDuplicates()
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { [weak self] isAppear, size in
+            guard let self = self else { return }
+            guard isAppear, size != .zero else {
+                self.invalid()
+                return
+            }
+
+            self.fetchThumbnail(targetSize: size)
+        }
+        .store(in: &disposeBag)
+
     }
 
     func fetchThumbnail(targetSize: CGSize) {
@@ -46,12 +69,13 @@ class PhotoThumbnailViewModel: ObservableObject {
         self.imageRequestID = self.imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options) { [weak self] image, options in
             guard let self = self else { return }
             if let image = image {
+                assert(Thread.isMainThread)
                 self.photo = image
             }
         }
     }
 
-    func cancelFetch() {
+    private func cancelFetch() {
         if let imageRequestID = self.imageRequestID {
             imageManager.cancelImageRequest(imageRequestID)
         }
@@ -62,11 +86,6 @@ class PhotoThumbnailViewModel: ObservableObject {
         logger.debug("\((#file as NSString).lastPathComponent, privacy: .public)[\(#line, privacy: .public)], \(#function, privacy: .public): invalid \(self.index)")
         cancelFetch()
         photo = nil
-        frame = nil
-    }
-
-    deinit {
-        invalid()
     }
 
 }
@@ -84,26 +103,20 @@ struct PhotoThumbnailView: View {
                         .aspectRatio(contentMode: .fill)
                 } else {
                     Color(uiColor: .systemFill)
-                        .onAppear {
-                            let scale = UIScreen.main.scale
-                            let targetSize = CGSize(width: proxy.size.width * scale, height: proxy.size.height * scale)
-                            viewModel.fetchThumbnail(targetSize: targetSize)
-                        }
                 }
             }
-            .onDisappear {
-                viewModel.invalid()                         /// photo set to nil but still leaking
-                print("\(viewModel.index) Disappear")
+            .onAppear {
+                viewModel.isAppear.value = true
             }
-            .onAppear(perform: {
-                print("\(viewModel.index) Appear")
-            })
+            .onDisappear {
+                viewModel.isAppear.value = false
+            }
             .preference(
                 key: PhotoThumbnailFramePreferenceKey.self,
                 value: proxy.frame(in: .global)
             )
             .onPreferenceChange(PhotoThumbnailFramePreferenceKey.self) { frame in
-                viewModel.frame = frame
+                viewModel.frame.value = frame
             }
         }
         .clipped()
