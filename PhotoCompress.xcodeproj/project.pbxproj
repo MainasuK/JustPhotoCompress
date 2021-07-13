@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,7 +18,6 @@
 		DBC74546269C91BE0014FE78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC74545269C91BE0014FE78 /* Main.storyboard */; };
 		DBC74548269C91F30014FE78 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC74547269C91F30014FE78 /* PhotoGalleryViewController.swift */; };
 		DBC7454A269C927A0014FE78 /* PhotoGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC74549269C927A0014FE78 /* PhotoGalleryView.swift */; };
-		DBC74574269CBD2B0014FE78 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DBC74573269CBD2B0014FE78 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBC74574269CBD2B0014FE78 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +171,6 @@
 			);
 			name = PhotoCompress;
 			packageProductDependencies = (
-				DBC74573269CBD2B0014FE78 /* Kingfisher */,
 			);
 			productName = PhotoCompress;
 			productReference = DB953D69268B9E3F0096F751 /* PhotoCompress.app */;
@@ -205,7 +202,6 @@
 			);
 			mainGroup = DB4EB31220FC9F0D0076F0A3;
 			packageReferences = (
-				DBC74572269CBD2B0014FE78 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = DB4EB31C20FC9F0D0076F0A3 /* Products */;
 			projectDirPath = "";
@@ -460,25 +456,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DBC74572269CBD2B0014FE78 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DBC74573269CBD2B0014FE78 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DBC74572269CBD2B0014FE78 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DB4EB31320FC9F0D0076F0A3 /* Project object */;
 }
