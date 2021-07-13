@@ -39,9 +39,11 @@ class PhotoThumbnailViewModel: ObservableObject {
         self.context = context
         self.index = index
 
+        let scale = UIScreen.main.scale
+
         Publishers.CombineLatest(
             isAppear.removeDuplicates(),
-            frame.map { $0.size }.removeDuplicates()
+            frame.map { CGSize(width: $0.size.width * scale, height: $0.size.height * scale) }.removeDuplicates()
         )
         .receive(on: DispatchQueue.main)
         .sink { [weak self] isAppear, size in
@@ -50,6 +52,7 @@ class PhotoThumbnailViewModel: ObservableObject {
                 self.invalid()
                 return
             }
+
 
             self.fetchThumbnail(targetSize: size)
         }
